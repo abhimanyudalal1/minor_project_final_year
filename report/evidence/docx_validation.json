@@ -1,0 +1,8 @@
+{
+  "output": "FINAL_REPORT.docx",
+  "embedded_images": 12,
+  "editable_math_objects": 121,
+  "tables": 27,
+  "paragraphs": 346,
+  "validated": "ZIP integrity, XML parse, chapters, diagrams, equations, pending placeholders"
+}

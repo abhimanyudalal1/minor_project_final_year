@@ -1,0 +1,100 @@
+# New experiment; reuse data from artifacts/study, never its checkpoints.
+protocol: burgers-revision-v2
+fixture: false
+data:
+  seed: 20261114
+  counts:
+    train: 2000
+    validation: 250
+    test: 500
+  reference_n: 8192
+  resolutions:
+  - 256
+  - 512
+  - 1024
+  base_n: 256
+  viscosity: 0.01
+  dt: 0.01
+  final_time: 2.0
+  train_time: 1.0
+  ic_modes: 64
+  ic_rms: 0.5
+  mean_range:
+  - -0.5
+  - 0.5
+  shard_size: 16
+solver:
+  initial_dt: 0.001
+  convergence_tolerance: 1.0e-05
+  mass_tolerance: 1.0e-10
+  energy_tolerance: 1.0e-10
+  max_refinements: 8
+  verification_seeds:
+  - 10101
+  - 20202
+  - 30303
+  - 40404
+model:
+  fno:
+    width: 71
+    modes: 16
+    layers: 4
+    projection: 77
+  unet:
+    channels:
+    - 32
+    - 64
+    - 128
+    - 256
+training:
+  seeds:
+  - 0
+  - 1
+  - 2
+  epochs: 60
+  batch_size: 256
+  learning_rate: 0.0003
+  validation_every: 2
+  checkpoint_every_updates: 100
+  scheduler: cosine
+  eta_min: 3.0e-06
+  variants:
+  - name: unet
+    model: unet
+    weight: 0.0
+  - name: fno
+    model: fno
+    weight: 0.0
+  - name: physics-soft
+    model: fno
+    weight: 1.0
+    derivative: spectral
+    physics_steps: 1
+  - name: physics-constrained
+    model: fno
+    weight: 1.0
+    derivative: spectral
+    stepping: residual
+    conserve_mean: true
+    physics_steps: 2
+evaluation:
+  horizons:
+  - 100
+  - 200
+  denominator_floor: 1.0e-08
+  divergence_factor: 100.0
+  bootstrap_samples: 10000
+  bootstrap_seed: 20261115
+  comparisons:
+  - - physics-soft
+    - fno
+  - - physics-constrained
+    - fno
+  - - physics-constrained
+    - physics-soft
+runtime:
+  device: auto
+  microbatch: 32
+  evaluation_batch: 16
+  disk_safety_margin_gb: 5
+dataset_protocol: burgers-v1

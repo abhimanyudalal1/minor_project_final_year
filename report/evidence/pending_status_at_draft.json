@@ -1,0 +1,67 @@
+{
+  "draft_date_local": "2026-11-17",
+  "timezone": "Asia/Kolkata",
+  "note": "Recorded runner states while assembling the report; live files may advance.",
+  "studies": {
+    "artifacts/pdebench-unet-constrained/execution/status.json": {
+      "child_pid": 3461,
+      "command": [
+        "/Users/abhimanyu/Desktop/clean_desktop/minor_project/.venv/bin/python",
+        "-m",
+        "burgers_research.cli",
+        "train",
+        "--config",
+        "/Users/abhimanyu/Desktop/clean_desktop/minor_project/artifacts/pdebench-unet-constrained/execution/source/configs/production.yaml",
+        "--work-dir",
+        "/Users/abhimanyu/Desktop/clean_desktop/minor_project/artifacts/pdebench-unet-constrained",
+        "--device",
+        "mps"
+      ],
+      "completed_stages": [
+        "attach-verified-data",
+        "matrix",
+        "doctor"
+      ],
+      "heartbeat_utc": "2026-11-16T20:09:44.853270+00:00",
+      "log": "/Users/abhimanyu/Desktop/clean_desktop/minor_project/artifacts/pdebench-unet-constrained/execution/train.log",
+      "message": "",
+      "pid": 3407,
+      "source_snapshot": "/Users/abhimanyu/Desktop/clean_desktop/minor_project/artifacts/pdebench-unet-constrained/execution/source",
+      "stage": "train",
+      "stage_started_utc": "2026-11-16T19:32:03.955668+00:00",
+      "started_utc": "2026-11-16T19:31:59.025230+00:00",
+      "status": "running",
+      "updated_utc": "2026-11-16T20:09:44.853247+00:00"
+    },
+    "artifacts/pdebench-600-three-models-2seeds/execution/status.json": {
+      "child_pid": null,
+      "command": [
+        "/Users/abhimanyu/Desktop/clean_desktop/minor_project/.venv/bin/python",
+        "-m",
+        "burgers_research.cli",
+        "matrix",
+        "--config",
+        "/Users/abhimanyu/Desktop/clean_desktop/minor_project/artifacts/pdebench-600-three-models-2seeds/execution/source/configs/production.yaml",
+        "--work-dir",
+        "/Users/abhimanyu/Desktop/clean_desktop/minor_project/artifacts/pdebench-600-three-models-2seeds",
+        "--device",
+        "mps"
+      ],
+      "completed_stages": [
+        "attach-verified-data",
+        "matrix"
+      ],
+      "heartbeat_utc": "2026-11-16T20:09:44.849492+00:00",
+      "log": "/Users/abhimanyu/Desktop/clean_desktop/minor_project/artifacts/pdebench-600-three-models-2seeds/execution/matrix.log",
+      "message": "",
+      "pid": 3649,
+      "source_snapshot": "/Users/abhimanyu/Desktop/clean_desktop/minor_project/artifacts/pdebench-600-three-models-2seeds/execution/source",
+      "stage": "waiting-for-prior-study",
+      "stage_started_utc": "2026-11-16T19:40:42.744108+00:00",
+      "started_utc": "2026-11-16T19:39:54.396708+00:00",
+      "status": "running",
+      "updated_utc": "2026-11-16T20:09:44.849466+00:00",
+      "waiting_for": "/Users/abhimanyu/Desktop/clean_desktop/minor_project/artifacts/pdebench-unet-constrained/execution/status.json"
+    }
+  }
+}
